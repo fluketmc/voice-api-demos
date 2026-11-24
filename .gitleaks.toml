@@ -1,0 +1,21 @@
+title = "voice-api-demos"
+
+[extend]
+useDefault = true
+
+[[rules]]
+id = "sip-password"
+description = "Senha SIP / digest em config ou codigo"
+regex = '''(?i)(sip|digest|auth)[_-]?(pass|password|secret)\s*[:=]\s*["']?[^\s"']{6,}'''
+keywords = ["sip", "digest", "auth"]
+
+[[rules]]
+id = "generic-api-token"
+description = "Token/API key generico"
+regex = '''(?i)(api[_-]?key|api[_-]?token|access[_-]?token|bearer)\s*[:=]\s*["']?[A-Za-z0-9_\-\.]{20,}'''
+keywords = ["api", "token", "bearer"]
+
+[allowlist]
+description = "Placeholders de exemplo"
+regexes = ['''(?i)(changeme|your[_-]?(api[_-]?)?(key|token|password)|xxxx+|<[^>]+>|\$\{[^}]+\})''']
+paths = ['''\.env\.example$''']
